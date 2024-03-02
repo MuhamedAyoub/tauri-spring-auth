@@ -1,12 +1,27 @@
-package esi.asci.auth.User;
+package esi.asci.auth.models;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users")
 public class UserRepository {
+    @Id
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Long id;
+    @Column(columnDefinition = "VARCHAR(30)", nullable = false)
     private String name;
+    @Column(unique = true, columnDefinition = "VARCHAR(30)", nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
 
-    // create constructors
     public UserRepository() {
     }
 

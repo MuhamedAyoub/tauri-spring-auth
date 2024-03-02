@@ -1,6 +1,8 @@
-package esi.asci.auth.User;
+package esi.asci.auth.services;
 
 import org.springframework.stereotype.Service;
+
+import esi.asci.auth.models.UserRepository;
 
 @Service
 public class UserService {
