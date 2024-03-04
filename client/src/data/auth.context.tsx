@@ -8,6 +8,7 @@ import {
 	useEffect,
 	useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext<TAuthContext>({
 	token: '',
@@ -18,10 +19,7 @@ const AuthContext = createContext<TAuthContext>({
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
 	const [authToken, setAuthToken] = useState<string>('');
-	const isAuthenticated = () => {
-		return !!authToken;
-	};
-	const s = useContext(AuthContext);
+
 	useEffect(() => {
 		const interceptor = Axios.interceptors.request.use((config) => {
 			config.headers.Authorization = `Bearer ${authToken}`;
@@ -55,3 +53,18 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 		</AuthContext.Provider>
 	);
 };
+
+const WithAuth = (page: () => JSX.Element) => {
+	const navigator = useNavigate();
+	const { token } = useContext(AuthContext);
+
+	if (!!token) {
+		return page;
+	}
+	navigator('/', {
+		replace: true,
+	});
+	return () => <> </>;
+};
+
+export { AuthContext, AuthProvider, WithAuth };

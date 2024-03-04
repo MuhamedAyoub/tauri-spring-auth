@@ -1,4 +1,3 @@
-'use client';
 import { useState } from 'react';
 import { SignInAccount } from './login';
 import { Card, CardFooter } from '../ui/card';
@@ -20,7 +19,9 @@ export default function AuthUI() {
 							prev === 'LOGIN' ? 'CREATE_ACCOUNT' : 'LOGIN'
 						)
 					}>
-					{selectedAuth === 'LOGIN' ? 'Forgot password?' : 'Back to login'}
+					{selectedAuth === 'LOGIN'
+						? 'Create a new account'
+						: 'Already have an account'}
 				</Label>
 			</CardFooter>
 		</Card>

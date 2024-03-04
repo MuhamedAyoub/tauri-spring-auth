@@ -38,14 +38,14 @@ export function CreateAccount() {
 	});
 	const navigator = useNavigate();
 	async function submitHandler(values: TAuthSchema) {
-		const {
-			data,
-			error,
-			loading: handledLoading,
-		} = await client.signup<TAuthSchema>(values);
-		console.log(data);
-		console.log(error);
-		setLoading(() => handledLoading);
+		// const {
+		// 	data,
+		// 	error,
+		// 	loading: handledLoading,
+		// } = await client.signup<TAuthSchema>(values);
+		// console.log(data);
+		// console.log(error);
+		// setLoading(() => handledLoading);
 	}
 	return (
 		<Form {...form}>

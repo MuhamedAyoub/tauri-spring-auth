@@ -37,11 +37,14 @@ export function SignInAccount() {
 	});
 	const navigator = useNavigate();
 	async function submitHandler(values: TAuthSchema) {
-		const {
-			data,
-			error,
-			loading: isLoading,
-		} = await client.login<TAuthSchema>(values);
+		// const {
+		// 	data,
+		// 	error,
+		// 	loading: isLoading,
+		// } = await client.login<TAuthSchema>(values);
+		// console.log(data)
+		// console.log(error)
+		// console.log(loading)
 	}
 	return (
 		<Form {...form}>
