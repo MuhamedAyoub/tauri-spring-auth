@@ -17,7 +17,7 @@ Axios.interceptors.response.use(
 		return response;
 	},
 	(error) => {
-		if (error?.response?.data?.message == 'INVALID_TOKEN') {
+		if (error?.response?.data?.message == 'UNAUTHORIZED') {
 			location.reload();
 		}
 		return error;
