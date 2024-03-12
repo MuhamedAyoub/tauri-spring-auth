@@ -1,18 +1,28 @@
 package esi.asci.auth.services;
 
+import esi.asci.auth.models.UserModel;
+import esi.asci.auth.repositories.RolesRepository;
+import esi.asci.auth.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import esi.asci.auth.models.UserRepository;
+import java.util.Optional;
+
 
 @Service
-public class UserService {
+public class UserService  {
     private final UserRepository userRepository;
 
+    @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public UserRepository getUserRepository() {
-        return userRepository;
+    public String getProfile(Long id) {
+        Optional<UserModel> user = this.userRepository.findById(id);
+        if (user.isPresent()) {
+            return user.get().toString();
+        }
+    throw new IllegalStateException("User with id " + id + " not found");
     }
 }
