@@ -1,8 +1,6 @@
 import InfoSection from '@/components/common/info';
-import { Button } from '@/components/ui/button';
 import { common } from '@/contents/common';
 import { SlashSquare } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const HomePage = () => {
 	// const { token } = useContext(AuthContext);
@@ -32,6 +30,7 @@ const Desc = () => {
 				What the project contain
 			</p>
 			<ul style={{ listStyle: 'inside' }}>
+				<li>Hashing Password</li>
 				<li>Auth System based on JWT</li>
 				<li>Spring Security </li>
 				<li>Handling Authorization with Spring Security </li>
@@ -42,10 +41,11 @@ const Desc = () => {
 			</ul>
 			<h4 className="text-lg underline">The Tech Stack ?:</h4>
 			<ul style={{ listStyle: 'inside' }}>
-				<li>Rust & Typescript </li>
-				<li>Tauri & React </li>
-				<li>Java & Spring Boot</li>
-				<li>Shad cn & Tailwind css</li>
+				<li>Rust 🔥 & Typescript </li>
+				<li>Tauri 🔥 & React 💪</li>
+				<li>Java & Spring Boot ♨️</li>
+				<li> Spring Security v6</li>
+				<li>Shad cn & Tailwind css 🗽</li>
 			</ul>
 		</>
 	);

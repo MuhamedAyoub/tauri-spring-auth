@@ -1,14 +1,7 @@
 import { client } from '@/config/client';
 import { Axios } from '@/config/http';
 import { TAuthContext } from '@/types';
-import {
-	PropsWithChildren,
-	createContext,
-	useContext,
-	useEffect,
-	useState,
-} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
 const AuthContext = createContext<TAuthContext>({
@@ -55,11 +48,12 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 			return { data, error, loading };
 		}
 
-		setAuthToken(data?.accessToken!);
+		setAuthToken(accessToken!);
 		setUser({
 			email: data?.email!,
 			name: data?.name!,
 		});
+
 		return { data, error, loading };
 	}
 	async function register<T>(values: T) {
@@ -77,7 +71,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 			return { data, error, loading };
 		}
 
-		setAuthToken(data?.accessToken!);
+		setAuthToken(accessToken!);
 		setUser({
 			email: data?.email!,
 			name: data?.name!,
