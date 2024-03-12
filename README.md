@@ -1,8 +1,10 @@
 # Auth with Tauri & Java Spring Boot
 
-![Spring.png](assets/Spring.png){width=220px height=200px}
+<div style="display:flex; justify-content: space-between; padding:35px">
+<img src="assets/Spring.png" alt="Spring" width="220" height="200">
 
-![Tauri.png](assets/Tauri.png){width=220px height=200px}
+<img src="assets/Tauri.png" alt="Tauri" width="220" height="200">
+ </div>
 
 # Overview:
 
