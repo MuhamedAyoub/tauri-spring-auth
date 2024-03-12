@@ -39,8 +39,10 @@ export function SignInAccount() {
 	const navigator = useNavigate();
 	const { login } = useContext(AuthContext);
 	async function submitHandler(values: TAuthSchema) {
+		setLoading(true);
 		const { data, error, loading: isLoading } = await login(values);
 
+		setLoading(isLoading);
 		if (data && !error) {
 			toast('Welcome back!', {
 				style: {

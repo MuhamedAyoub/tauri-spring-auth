@@ -33,6 +33,10 @@ const Desc = () => {
 			</p>
 			<ul style={{ listStyle: 'inside' }}>
 				<li>Auth System based on JWT</li>
+				<li>Spring Security </li>
+				<li>Handling Authorization with Spring Security </li>
+				<li>Input Validation from Frontend</li>
+				<li>Api Validation from Backend</li>
 				<li>Sign In , Sign Up pages</li>
 				<li>Profile Page</li>
 			</ul>

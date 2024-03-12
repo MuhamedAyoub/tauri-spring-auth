@@ -10,6 +10,7 @@ const WithAuth = (WrappedComponent: React.FC) => {
 		const { token } = useContext(AuthContext);
 		useEffect(() => {
 			if (!token) {
+				console.log(token);
 				navigator('/');
 			}
 		});

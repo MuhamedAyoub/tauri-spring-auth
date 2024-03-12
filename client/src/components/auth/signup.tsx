@@ -21,8 +21,9 @@ import {
 } from '../ui/form';
 import { useNavigate } from 'react-router-dom';
 import { createAccountSchema } from '../../types/zod';
-import { client } from '@/config/client';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '@/data/auth.context';
+import { toast } from 'sonner';
 
 export type TAuthSchema = z.infer<typeof createAccountSchema>;
 export function CreateAccount() {
@@ -37,15 +38,23 @@ export function CreateAccount() {
 		},
 	});
 	const navigator = useNavigate();
+	const { register } = useContext(AuthContext);
 	async function submitHandler(values: TAuthSchema) {
-		// const {
-		// 	data,
-		// 	error,
-		// 	loading: handledLoading,
-		// } = await client.signup<TAuthSchema>(values);
-		// console.log(data);
-		// console.log(error);
-		// setLoading(() => handledLoading);
+		setLoading(true);
+		const { data, error, loading: handledLoading } = await register(values);
+		setLoading(handledLoading);
+		if (data && !error) {
+			toast('Welcome To ASCI !', {
+				style: {
+					backgroundColor: 'green',
+					color: 'white',
+					fontSize: '1rem',
+				},
+			});
+			setTimeout(() => {
+				navigator('/profile');
+			}, 2000);
+		}
 	}
 	return (
 		<Form {...form}>

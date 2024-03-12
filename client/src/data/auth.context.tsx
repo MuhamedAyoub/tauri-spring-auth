@@ -55,7 +55,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 			return { data, error, loading };
 		}
 
-		setAuthToken(accessToken!);
+		setAuthToken(data?.accessToken!);
 		setUser({
 			email: data?.email!,
 			name: data?.name!,
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 			return { data, error, loading };
 		}
 
-		setAuthToken(accessToken!);
+		setAuthToken(data?.accessToken!);
 		setUser({
 			email: data?.email!,
 			name: data?.name!,
