@@ -36,7 +36,6 @@ The project is an academic endeavor aimed at implementing authentication tasks w
     - React 💪
     - Spring Boot ♨️
     - Spring Security v6
-- **UI/UX:**
     - Shad cn
     - Tailwind CSS 🗽
 
