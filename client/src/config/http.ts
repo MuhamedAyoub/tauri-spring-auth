@@ -7,11 +7,9 @@ const Axios = axios.create({
 		'Content-Type': 'application/json',
 		Accept: 'application/json',
 		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Credentials': true,
 		'Access-Control-Allow-Methods': 'GET, POST',
 	},
 	timeout: 10000,
-	withCredentials: true,
 });
 
 Axios.interceptors.response.use(

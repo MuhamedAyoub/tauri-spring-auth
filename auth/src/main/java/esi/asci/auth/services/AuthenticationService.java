@@ -66,6 +66,9 @@ public class AuthenticationService {
     }
 
     public AuthResponse authenticate(AuthRequest request, HttpServletResponse response) {
+        if(this.repository.findByEmail(request.getEmail()).isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),request.getPassword()

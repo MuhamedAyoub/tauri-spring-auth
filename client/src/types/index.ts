@@ -3,6 +3,10 @@ export type TAuthContext = {
 	login: Function;
 	register: Function;
 	logout: Function;
+	user: {
+		email: string;
+		name: string;
+	};
 };
 
 export type TResponse<T> = {

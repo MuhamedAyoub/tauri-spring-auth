@@ -9,9 +9,14 @@ import {
 	useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const AuthContext = createContext<TAuthContext>({
 	token: '',
+	user: {
+		email: '',
+		name: '',
+	},
 	login: () => ({}),
 	logout: () => ({}),
 	register: () => ({}),
@@ -19,6 +24,13 @@ const AuthContext = createContext<TAuthContext>({
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
 	const [authToken, setAuthToken] = useState<string>('');
+	const [user, setUser] = useState<{
+		email: string;
+		name: string;
+	}>({
+		email: '',
+		name: '',
+	});
 
 	useEffect(() => {
 		const interceptor = Axios.interceptors.request.use((config) => {
@@ -32,39 +44,56 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 	}, [authToken]);
 	async function login<T>(values: T) {
 		const { accessToken, data, error, loading } = await client.login<T>(values);
+		if (error) {
+			toast('Error while trying to send the page ', {
+				style: {
+					backgroundColor: 'red',
+					color: 'white',
+					fontSize: '1rem',
+				},
+			});
+			return { data, error, loading };
+		}
 
-		setAuthToken(accessToken);
+		setAuthToken(accessToken!);
+		setUser({
+			email: data?.email!,
+			name: data?.name!,
+		});
 		return { data, error, loading };
 	}
 	async function register<T>(values: T) {
 		const { accessToken, data, error, loading } = await client.signup<T>(
 			values
 		);
+		if (error) {
+			toast('Error while trying to send the page ', {
+				style: {
+					backgroundColor: 'red',
+					color: 'white',
+					fontSize: '1rem',
+				},
+			});
+			return { data, error, loading };
+		}
 
-		setAuthToken(accessToken);
+		setAuthToken(accessToken!);
+		setUser({
+			email: data?.email!,
+			name: data?.name!,
+		});
+
 		return { data, error, loading };
 	}
 	const logout = () => {
 		setAuthToken('');
 	};
 	return (
-		<AuthContext.Provider value={{ token: authToken, login, logout, register }}>
+		<AuthContext.Provider
+			value={{ token: authToken, login, logout, register, user }}>
 			{children}
 		</AuthContext.Provider>
 	);
 };
 
-const WithAuth = (page: () => JSX.Element) => {
-	const navigator = useNavigate();
-	const { token } = useContext(AuthContext);
-
-	if (!!token) {
-		return page;
-	}
-	navigator('/', {
-		replace: true,
-	});
-	return () => <> </>;
-};
-
-export { AuthContext, AuthProvider, WithAuth };
+export { AuthContext, AuthProvider };

@@ -6,9 +6,9 @@ import { PropsWithChildren } from 'react';
 const Providers = ({ children }: PropsWithChildren) => {
 	return (
 		<>
-			{/* <AuthProvider> */}
-			<BrowserRouter basename="/">{children}</BrowserRouter>
-			{/* </AuthProvider> */}
+			<AuthProvider>
+				<BrowserRouter basename="/">{children}</BrowserRouter>
+			</AuthProvider>
 			<Toaster />
 		</>
 	);
