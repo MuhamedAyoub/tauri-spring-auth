@@ -39,6 +39,26 @@ The project is an academic endeavor aimed at implementing authentication tasks w
     - Shad cn
     - Tailwind CSS 🗽
 
-## Conclusion
+### Frontend web Setup
+```bash
+# Install dependencies
+npm install # OR pnpm i 
 
+# Run the frontend server
+npm run dev # or pnpm dev 
+ ```
+### Frontend Desktop Setup
+```bash
+# Install dependencies
+npm install # OR pnpm i 
+
+# Run the desktop dev view
+npm run tauri dev # or pnpm trauri dev 
+ ```
+### Backend Server Setup
+**Projet runs postgres db using docke**.
+
+use Jetbrain IDE , maven for runing the java code
+
+## Conclusion
 The project aims to provide a comprehensive understanding of authentication mechanisms, security practices, and modern development tools and frameworks. Through the implementation of various features and technologies, it serves as a practical learning experience for students studying authentication and security.`
